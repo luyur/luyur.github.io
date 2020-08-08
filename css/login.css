@@ -1,0 +1,43 @@
+html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #eb5a5a;
+    user-select: none;/*不可选中*/
+    height: 100%;
+    margin: 0;
+}
+div.dock{
+    width: 25%;
+    border-radius: 50px;
+    background-color: #7fffD4;
+    position: fixed;
+    bottom: 8px;
+    height: 40px;
+    left: 38%;
+    display: flex;
+    justify-content: center;
+}
+a{
+    text-decoration: none;
+    align-self: center;/*垂直居中*/
+    color:rgb(212, 83, 238);
+    font-weight: 500;
+    font-family:Source Han Sans CN;/*字体设置,此字体为思源字体*/
+    font-size: 125%;
+}
+a:hover{
+    color: rgb(0, 0, 0);
+}
+div.full{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+}
+.include{
+    margin-top: 15%;
+}

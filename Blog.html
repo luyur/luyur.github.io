@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <link rel="icon" href="../NewFolder/image/圆角.ico" />
+   <script src="./vue.js.css"></script>
+   <link href="./iview.css" rel="stylesheet">
+   <script src="./iview.min.js"></script>
+   <title>正能量网页</title>
+</head>
+<style>
+   html,
+   div.fullscreen,
+   div.truefull {
+      height: 100%;
+   }
+
+   body {
+      background: #eb5a5a;
+      margin: 0;
+      height: 100%;
+   }
+
+   div.docklan {
+      background-color: #7FFFD4;
+      border-radius: 50px;
+      position: fixed;
+      display: flex;
+      bottom: 8px;
+      width: 40%;
+      left: 30%;
+      margin-left: 0;
+      height: 35px;
+      justify-content: center;
+      opacity: 0.80;
+      /*透明度*/
+   }
+
+   ul.dock {
+      align-self: center;
+      padding: 0;
+   }
+
+   li.aaa {
+      display: inline;
+      margin: 20px;
+   }
+
+   li.aaa :hover {
+      color: rgb(0, 0, 0);
+   }
+
+   a.ccc {
+      text-decoration: none;
+      color: rgb(212, 83, 238);
+      font-weight: 500;
+      font-family: Source Han Sans CN;
+      /*字体设置,此字体为思源字体*/
+      font-size: 125%;
+   }
+
+   div.introduction {
+      color: aquamarine;
+      text-align: center;
+      font-size: 90%;
+   }
+
+   div.logo {
+      text-align: center;
+      margin-top: 15%;
+      margin-bottom: 16%;
+   }
+
+   div.logo img {
+      border-radius: 50%;
+      text-align: center;
+   }
+
+   div.side-bar {
+      float: left;
+      width: 12%;
+      padding: 0px;
+      background-color: brown;
+      height: 80%;
+      margin-top: 3%;
+      margin-left: 20%;
+      border-radius: 35px;
+      opacity: 95%;
+   }
+
+   div.tag-bar {
+      text-align: center;
+      font-family: "黑体";
+      padding: 13%;
+      font-size: 110%;
+   }
+
+   ul.ddd {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+   }
+
+   li.bbb {
+      display: inline;
+   }
+
+   li.bbb a {
+      display: block;
+      color: rgb(120, 226, 21);
+      text-decoration: none;
+   }
+
+   div.side-bar a:hover {
+      color: rgb(93, 196, 196);
+   }
+
+   div.main {
+      width: 100%;
+      height: 100%;
+   }
+
+   div.right {
+      margin-top: 3%;
+      float: right;
+      width: 50%;
+      margin-right: 16%;
+      height: 70%;
+   }
+
+   div.first {
+      display: flex;
+      width: 100%;
+      background-color: brown;
+      justify-content: center;
+      border-radius: 30px;
+   }
+
+   div.opisitiveenergy {
+      color: rgb(190, 93, 48);
+      margin-top: 3px;
+      margin-bottom: 3px;
+      font-size: 3.5em;
+   }
+
+   @media screen and (min-width:1015px) {
+      div.tip {
+         display: none;
+      }
+
+   }
+
+   @media screen and (max-width: 1015px) {
+      div.fullscreen {
+         position: absolute;
+         display: grid;
+         width: 100%;
+         height: 100%;
+         background-color: #ffffff;
+         left: 0;
+         top: 0;
+         bottom: 0;
+         right: 0;
+         z-index: -1;
+      }
+
+      div.docklan,
+      .side-bar,
+      .main {
+         display: none;
+      }
+
+      div.tip {
+         position: absolute;
+         top: 44%;
+         left: 26%;
+         font-family: "黑体";
+         font-size: 3em;
+      }
+
+   }
+</style>
+
+<body>
+   <div class="truefull">
+      <div class="tip">请放大屏幕以方便浏览</div>
+      <div class="fullscreen">
+         <div class="docklan">
+            <ul class="dock">
+               <li class="aaa"><a class="ccc" href="../NewFolder/Blog.html">首页</a></li>
+               <li class="aaa"><a class="ccc" href="">论坛</a></li>
+               <li class="aaa"><a class="ccc" href="">🔍</a></li>
+               <li class="aaa"><a class="ccc" href="">下载</a></li>
+               <li class="aaa"><a class="ccc" href="../NewFolder/login.html">登录</a></li>
+            </ul>
+         </div>
+         <div class="side-bar">
+            <div class="logo"><img src="../NewFolder/images/头像.jpg" alt="一个头像。" class="logo" width="100" height="100">
+            </div>
+            <div class="introduction">你好，我是芦宇瑞</div>
+            <ul class="ddd">
+               <li class="bbb">
+                  <div class="tag-bar"><a href="../NewFolder/images/新建文本文档.txt" target="_blank">基本信息</a></div>
+               </li>
+               <li class="bbb">
+                  <div class="tag-bar"><a href="https://weibo.com/lyr2578950361/" target="_blank">个人微博</a></div>
+               </li>
+               <li class="bbb">
+                  <div class="tag-bar"><a href="https://www.bilibili.com/" target="_blank">哔哩哔哩</a></div>
+               </li>
+               <li class="bbb">
+                  <div class="tag-bar"><a href="..//NewFolder/Blog.html">个人博客</a></div>
+               </li>
+               <li class="bbb">
+                  <div class="tag-bar"><a href="https://github.com/" target="_blank">Github</a></div>
+               </li>
+               <li class="bbb">
+                  <div class="tag-bar"><a href="" target="_blank">观看更多</a></div>
+               </li>
+            </ul>
+         </div>
+         <div class="main">
+            <div class="right">
+               <div class="first">
+                  <div class="opisitiveenergy">正能量音讯
+                  </div>
+               </div>
+                  <div id="vue-app" style="display: flex;justify-content: center;">
+                     <div class="vue-app1" style="align-self: center; height: 100%; width: 100%;">
+                        <img src="ao.png" width="50%" height="80%" @click="ao();success()" v-if="!status">
+                        <img src="ao.png" width="75%" height="100%" @click="ao();success()" v-if="status">
+                        <audio id='myAudio'>
+                           <source src="ao.mp3" type="audio/mpeg">
+                        </audio>
+                     </div>
+                  </div>
+            </div>
+
+         </div>
+      </div>
+   </div>
+</body>
+
+<script>
+
+   var vm = new Vue({
+      el: '#vue-app',
+      data() {
+         return {
+            count: 0,
+            x: document.getElementById("myAudio"),
+            status: false
+         }
+      },
+      methods: {
+         success() {
+            //this.$Message.success('This is a success tip');
+            this.$Message.success({
+               content: `你已经奥利给了${this.count}次`,
+               duration: 0.5
+            });
+         },
+         ao() {
+            if (this.count % 2) {
+               this.status = !this.status
+               this.x.load()
+               this.x.play()
+            }
+            else {
+               this.status = !this.status
+               this.x.pause()
+               this.x.play()
+            }
+            this.count += 1
+         },
+      },
+   })
+</script>
+
+<script>
+
+   function click() {
+      if (event.button == 2) {
+         alert('奥里给！');
+      }
+   }
+   document.onmousedown = click
+</script>
+
+</html>

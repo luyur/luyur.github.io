@@ -1,0 +1,151 @@
+html,div.fullscreen,div.truefull{
+    height: 100%;
+}
+body{
+    background: #eb5a5a;
+    margin: 0;
+    height:100%;
+}
+div.docklan{
+    background-color:#7FFFD4;
+    border-radius: 50px;
+    position: fixed;
+    display: flex;
+    bottom: 8px;
+    width: 40%;
+    left: 30%;
+    margin-left: 0;
+    height: 35px;
+    justify-content: center;
+    opacity: 0.80;/*透明度*/
+}
+ul.dock{
+    align-self: center;
+    padding: 0;
+}
+li.aaa{
+    display: inline;
+    margin: 20px;
+}
+li.aaa :hover{
+    color: rgb(0, 0, 0);
+}
+a.ccc{
+    text-decoration: none;
+    color:rgb(212, 83, 238);
+    font-weight: 500;
+    font-family:Source Han Sans CN;/*字体设置,此字体为思源字体*/
+    font-size: 125%;
+}
+div.introduction {
+    color: aquamarine;
+    text-align: center;
+    font-size: 90%;
+}
+div.logo{
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 16%;
+}
+div.logo img{
+    border-radius:50%;
+    text-align: center;
+}
+div.side-bar{
+    float: left;
+    width: 12%;
+    padding: 0px;
+    background-color: brown;
+    height: 80%;
+    margin-top: 3%;
+    margin-left: 20%;
+    border-radius: 35px;
+    opacity: 95%;
+}
+div.tag-bar{
+    text-align: center;
+    font-family:"黑体";
+    padding:13%;
+    font-size: 110%;
+}
+ul.ddd{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+li.bbb{
+    display: inline;
+}
+li.bbb a {
+    display: block;
+    color: rgb(120, 226, 21);
+    text-decoration: none;
+}
+div.side-bar a:hover{
+   color:rgb(93, 196, 196);
+}
+div.main{
+    width: 100%;
+    height: 100%;
+}
+div.right{
+    margin-top: 3%;
+    float: right;
+    width: 50%;
+    margin-right: 16%;
+    height: 70%;
+}
+div.first{
+    display: flex;
+    width: 100%;
+    background-color: brown;
+    justify-content: center;
+    border-radius: 30px;
+}
+div.opisitiveenergy{
+    color: rgb(190, 93, 48);
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-size: 3.5em;
+}
+div.opisitiveenergyvideo{
+    height: 100%;
+}
+iframe{
+    width: 100%;
+    height: 98%;
+    border-radius: 30px;
+    margin-top: 1%;
+}
+@media screen and (min-width:1015px){
+    div.tip{
+        display: none;
+    }
+    
+}
+@media screen and (max-width: 1015px){
+    div.fullscreen{
+        position: absolute;
+        display: grid;
+        width: 100%;        
+        height: 100%;
+        background-color: #ffffff;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+    }
+    div.docklan,.side-bar,.main{
+        display: none;
+    }
+    div.tip{
+        position: absolute;
+        top: 44%;
+        left: 26%;
+        font-family:"黑体";
+        font-size: 3em;
+    }
+
+}
