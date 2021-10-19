@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+<body>
+    <textarea id="textarea" cols="30" rows="10"></textarea>
+    <br>
+    <br>
+    <button id="btn" style="height: 50px;width: 293px;">读取剪切板</button>
+    <script>
+        const textarea = document.querySelector('#textarea')
+        document.querySelector('#btn').onclick = () =>
+        {
+            navigator.clipboard.readText().then(text =>
+            {
+                textarea.value = text
+            })
+        }
+    </script>
+</body>
+
+</html>
