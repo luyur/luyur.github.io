@@ -21,6 +21,7 @@
 
 ### 2022-2023第二学年要做的五件事： 
 　暂略。
-
+ 
+* * *
 - [教务系统](http://jwgl.shzu.edu.cn/)
 - [四六级](https://cet-bm.neea.edu.cn/)
