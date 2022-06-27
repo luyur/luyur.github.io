@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon"
+        href="https://images.cnblogs.com/cnblogs_com/luyurui/2022175/o_211024151731_%E5%B7%A5%E5%85%B7-1.png"
+        type="image/x-icon">
+    <title>Tool</title>
+</head>
+<style>
+    * {
+        margin: 0;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .box {
+        border-radius: 15px;
+        display: grid;
+        height: 250px;
+        width: 550px;
+        padding: 8px;
+        border: 1px solid black;
+        align-self: center;
+        justify-items: center;
+        align-items: center;
+        align-content: space-evenly;
+    }
+
+    #input_box {
+        border-radius: 15px;
+        height: 50px;
+        width: 400px;
+    }
+
+    button {
+        height: 40px;
+        /* 按钮高度  */
+        width: 150px;
+        /* 按钮宽度  */
+        border-radius: 10px;
+    }
+
+    .form {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+<script>
+    window.onload = function ()
+    {
+        var button = document.getElementsByTagName('button')[0];
+        var input = document.getElementById('input_box');
+        input.focus();
+        // var input = document.getElementsByTagName('input')[0]; //这个就不可以//可以了//确实不可以
+        var text;
+        var radioBox = document.getElementsByName("radioBox");
+
+        function all_replace(a, b, c)
+        {
+            var reg = new RegExp(b, "g");
+            a = a.replace(reg, c);
+            return a;
+        }
+        function changeText()
+        {
+            text = all_replace(text, " ", "");
+            text = all_replace(text, "%3A", ":");
+            text = all_replace(text, "%2F", "/");
+            text = all_replace(text, "%3F", "?");
+            text = all_replace(text, "%3D", "=");
+            text = all_replace(text, "%26", "&");
+            text = all_replace(text, "%24", "$");
+            text = all_replace(text, "%23", "#");
+            text = all_replace(text, "%25", "%");
+            text = all_replace(text, "https://utweb.trontv.com/gui/share.html#link=", "");
+            // console.log(text)
+        }
+
+        ///////////////////////////////////复制功能
+        function copyText(txt, callback)
+        {
+            document.getElementById('input_box').select();
+            document.execCommand('copy');
+            if (callback)
+            {
+                callback(txt)
+            }
+        }
+        /////////////////////////////////////
+
+        function Button()
+        {
+
+            if (radioBox[0].checked)        //功能1-------------------------------------
+            {
+                text = input.value;
+                if (text == '')
+                {
+                    alert('请输入内容');
+                    return false;     //return后不会执行后边代码
+                }
+                changeText();
+                input.value = text;
+                copyText(text, function (txt) { console.log('复制成功,复制内容为:' + txt) });
+            } else if (radioBox[1].checked) //功能2-------------------------------------
+            {
+                alert('4.71GB[爆机少女喵小吉]: magnet:?xt=urn:btih:1F56F6328F5B441298FFD99812C0B4E77382C4B4\n\n8.0GB[相泽南]IPX-801: magnet:?xt=urn:btih:28E7E306046EB0A45BCF26924C8049FED18D8429\n\n8G[西咲妃那]MIGD-659: magnet:?xt=urn:btih:71879e5dae47333ff9034ab6629b19dbcfd8575f&dn=migd-659\n\n');
+
+            } else if (radioBox[2].checked) //功能3-------------------------------------
+            {
+                alert('功能3暂未开发');
+            }
+        }
+
+        button.onclick = function () { Button() };
+        input.onkeydown = function () //设置快捷键
+        {
+            if (event.keyCode == 13) Button(); //enter快捷键
+            if (event.keyCode == 27) input.value = ''; //esc快捷键
+        }
+    }
+
+</script>
+
+<body>
+    <div class="box">
+        <input type="text" id="input_box" placeholder="请输入内容">
+        <form class="form">
+            <div title="网址转换,并自动复制转换后网址">功能1:
+                <input type="radio" checked="checked" name="radioBox" />
+            </div>
+            <div title="暂未开发">功能2:
+                <input type="radio" name="radioBox" />
+            </div>
+            <div title="暂未开发">功能3:
+                <input type="radio" name="radioBox" />
+            </div>
+        </form>
+        <button>回车</button>
+    </div>
+</body>
+
+</html>
