@@ -28,6 +28,6 @@
  
 * * *
 - [教务系统](http://jwgl.shzu.edu.cn/)
-- [四六级](https://cet-bm.neea.edu.cn/)
+- [英语四六级](https://cet-bm.neea.edu.cn/)
 - [计算机等级](http://ncre.neea.edu.cn/)
-- [软考](https://www.ruankao.org.cn/)
+- [计算机软考](https://www.ruankao.org.cn/)
