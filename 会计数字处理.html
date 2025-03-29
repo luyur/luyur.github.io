@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon"
+        href="https://images.cnblogs.com/cnblogs_com/luyurui/2022175/o_240721094351_%E8%AE%A1%E7%AE%97%E5%99%A8.png"
+        type="image/x-icon">
+    <title>会计数字转换器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding-top: 30vh;
+        }
+
+        .container {
+            width: 400px;
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid;
+        }
+
+        h1 {
+            font-family: 隶书;
+        }
+
+        input[type="text"] {
+            width: 180px;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #copyMessage {
+            color: green;
+            margin-top: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 5px 10px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 4px 4px 0 0;
+            background-color: #f1f1f1;
+            font-size: 15px;
+        }
+
+        .tab.active {
+            background-color: white;
+            border-bottom: 1px solid white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>会计数字转换器</h1>
+        <div class="tabs">
+            <div id="tab1" class="tab active" title="将单位为元的会计数字转化为以万元为单位并且保留两位小数（四舍五入）。"
+                onclick="switchTab(event, 'accounting')">
+                化为万元</div>
+            <div id="tab2" class="tab" title="移除会计数字中的空格以及逗号，单位并不发生改变。" onclick="switchTab(event, 'trim')">去除空格和逗号</div>
+        </div>
+        <div id="accounting" class="tab-content active">
+            <input type="text" title="按回车进行处理" id="accountingNumberInput" autofocus placeholder="输入会计数字..." />
+            <div id="resultArea">
+                结果: <span id="result"></span>万元
+            </div>
+        </div>
+        <div id="trim" class="tab-content">
+            <input type="text" title="按回车进行处理" id="trimInput" placeholder="输入会计数字..." />
+            <div id="trimResultArea">
+                结果: <span id="trimResult">元</span>
+            </div>
+        </div>
+        <p id="copyMessage" style="display:none;">已复制: <span id="copiedResult"></span></p>
+    </div>
+
+    <script>
+        let accountingNumberInput = document.getElementById('accountingNumberInput');
+        let trimInput = document.getElementById('trimInput');
+
+        document.getElementById('tab1').addEventListener('click', function ()
+        {
+            accountingNumberInput.focus();
+            accountingNumberInput.setSelectionRange(0, accountingNumberInput.value.length); // 全选input内容
+        });
+        document.getElementById('tab2').addEventListener('click', function ()
+        {
+            trimInput.focus();
+            trimInput.setSelectionRange(0, trimInput.value.length); // 全选input内容
+        });
+
+        function switchTab(event, tabName)
+        {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++)
+            {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++)
+            {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+
+        function convertToTenThousand(numStr) // 转换为万元（保留两位小数）。
+        {
+            let cleanNumStr = numStr.replace(/[^0-9.-]+/g, "");
+            let number = parseFloat(cleanNumStr);
+            let result = (number / 10000).toFixed(2);
+            return result;
+        }
+
+        function trimAndRemoveCommas(str) // 去除逗号和空格。
+        {
+            return str.replace(/[^0-9.]+/g, "").replace(/ /g, '').replace(/,/g, '').replace(/，/g, '');
+        }
+
+        function copyAndNotify(result)
+        {
+            navigator.clipboard.writeText(result)
+                .then(() =>
+                {
+                    document.getElementById('copyMessage').style.display = 'block';
+                    document.getElementById('copiedResult').innerText = result;
+                    setTimeout(function ()
+                    {
+                        document.getElementById('copyMessage').style.display = 'none';
+                    }, 5000);
+                })
+                .catch(err => console.error('复制失败: ', err));
+        }
+
+        accountingNumberInput.addEventListener('keyup', function (event)
+        {
+            if (event.key === 'Enter')
+            {
+                let input = event.target.value.trim();
+                if (input === '')
+                {
+                    document.getElementById('copyMessage').style.display = 'block';
+                    document.getElementById('copyMessage').innerText = '请输入数字！';
+                    document.getElementById('resultArea').style.display = 'none';
+                    setTimeout(function ()
+                    {
+                        document.getElementById('copyMessage').style.display = 'none';
+                    }, 2000);
+                    return;
+                } else
+                {
+                    accountingNumberInput.select();
+                    let result = convertToTenThousand(input);
+                    document.getElementById('result').innerText = result;
+                    document.getElementById('resultArea').style.display = 'block';
+                    copyAndNotify(result);
+                }
+            }
+        });
+
+        trimInput.addEventListener('keyup', function (event)
+        {
+            if (event.key === 'Enter')
+            {
+                let input = event.target.value.trim();
+                if (input === '')
+                {
+                    document.getElementById('copyMessage').style.display = 'block';
+                    document.getElementById('copyMessage').innerText = '请输入数字！';
+                    document.getElementById('resultArea').style.display = 'none';
+                    setTimeout(function ()
+                    {
+                        document.getElementById('copyMessage').style.display = 'none';
+                    }, 2000);
+                    return;
+                } else
+                {
+                    trimInput.select();
+                    let result = trimAndRemoveCommas(input);
+                    document.getElementById('trimResult').innerText = result;
+                    document.getElementById('trimResultArea').style.display = 'block';
+                    copyAndNotify(result);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
